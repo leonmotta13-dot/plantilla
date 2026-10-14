@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MOTO LUJOS</title>
+<meta name="description" content="Tu moto en las mejores manos y más. Agenda tu cita por WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Oswald:wght@500;700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --bg: #070707; --bg2: #111111; --card: #1a1a1a;
+    --acc: #d4af37; --acc2: #f5d76e; --line: #9c7a1a;
+    --txt: #e9e4d4; --muted: #9a9684; --onacc: #000000;
+    --hero: radial-gradient(circle at 50% 30%, #2a2208 0%, #0d0d0d 55%, #000 100%);
+    --ft: 'Cinzel', Georgia, serif;
+  }
+  html { scroll-behavior: smooth; scroll-padding-top: 76px; background: var(--bg); }
+  body { margin: 0; padding: 0; background: var(--bg); color: var(--txt); font-family: 'Poppins', Arial, sans-serif; line-height: 1.6; }
+  * { box-sizing: border-box; }
+  [hidden] { display: none !important; }
+  a { text-decoration: none; cursor: pointer; color: inherit; }
+  img { max-width: 100%; display: block; }
+
+  /* LOGO REDONDO */
+  .n-logo {
+    border-radius: 50%; border: 2px solid var(--acc); background-color: var(--card);
+    background-position: center; background-size: cover; background-repeat: no-repeat;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--acc); font-family: var(--ft); font-weight: 700; letter-spacing: 1px;
+    overflow: hidden; flex-shrink: 0; box-shadow: 0 4px 18px rgba(0,0,0,.35);
+  }
+  .n-logo.chico { width: 44px; height: 44px; font-size: 1rem; }
+  .n-logo.grande { width: 170px; height: 170px; font-size: 2.6rem; margin-bottom: 30px; border-width: 3px; }
+
+  /* NAV */
+  .n-nav {
+    position: sticky; top: 0; z-index: 50; display: flex; justify-content: space-between; align-items: center;
+    padding: 12px 6%; background: var(--bg); border-bottom: 1px solid var(--line);
+  }
+  .n-marca { display: flex; align-items: center; gap: 12px; }
+  .n-nombre { font-family: var(--ft); font-weight: 700; letter-spacing: 2px; color: var(--acc2); text-transform: uppercase; font-size: 1rem; }
+  .n-nav ul { display: flex; gap: 26px; list-style: none; margin: 0; padding: 0; }
+  .n-nav ul a { font-size: .82rem; letter-spacing: 2px; text-transform: uppercase; color: var(--txt); transition: color .25s; }
+  .n-nav ul a:hover { color: var(--acc2); }
+  .n-burger {
+    display: none; background: transparent; border: 1px solid var(--line); color: var(--acc);
+    width: 42px; height: 42px; font-size: 1.3rem; cursor: pointer;
+  }
+
+  /* PORTADA */
+  .n-hero {
+    min-height: 82vh; display: flex; flex-direction: column; justify-content: center; align-items: center;
+    text-align: center; padding: 80px 6%; background: var(--hero); border-bottom: 1px solid var(--line);
+    background-size: cover; background-position: center;
+  }
+  .n-hero h1 {
+    margin: 0; font-family: var(--ft); font-weight: 700; text-transform: uppercase;
+    font-size: clamp(2.1rem, 7vw, 4.6rem); letter-spacing: 5px; color: var(--acc);
+  }
+  .n-hero p { margin: 0; font-size: clamp(.95rem, 2.2vw, 1.3rem); letter-spacing: 4px; text-transform: uppercase; color: var(--acc2); font-weight: 300; }
+  .n-hero.foto h1 { color: #ffffff; }
+  .n-hero.foto p { color: #f1f1f1; }
+  .n-linea { width: 110px; height: 2px; margin: 24px auto; background: var(--acc); }
+  .n-hero-btns { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; margin-top: 36px; }
+
+  .n-btn {
+    display: inline-block; padding: 14px 34px; font-weight: 600; letter-spacing: 2px; font-size: .82rem;
+    text-transform: uppercase; color: var(--onacc); background: var(--acc);
+    border: 1px solid var(--acc); font-family: inherit; cursor: pointer;
+    transition: transform .25s, box-shadow .25s, background .25s, color .25s;
+  }
+  .n-btn:hover { background: var(--acc2); border-color: var(--acc2); transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,.3); }
+  .n-btn.sec { background: transparent; color: var(--acc2); border: 1px solid var(--acc); }
+  .n-hero.foto .n-btn.sec { color: #fff; border-color: #fff; }
+  .n-btn.sec:hover { background: var(--acc); color: var(--onacc); }
+  .n-btn.chico { padding: 10px 20px; font-size: .74rem; }
+
+  /* SECCIONES */
+  .n-sec { padding: 84px 6%; background: var(--bg); }
+  .n-sec.alt { background: var(--bg2); }
+  .n-tit {
+    margin: 0; text-align: center; font-family: var(--ft); font-weight: 700; text-transform: uppercase;
+    font-size: clamp(1.5rem, 4vw, 2.4rem); letter-spacing: 4px; color: var(--acc);
+  }
+  .n-sub { text-align: center; color: var(--muted); margin: 8px 0 0; font-weight: 300; }
+  .n-texto { max-width: 780px; margin: 0 auto; text-align: center; color: var(--txt); font-weight: 300; font-size: 1.02rem; }
+
+  /* SERVICIOS */
+  .n-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 30px; max-width: 1100px; margin: 50px auto 0; }
+  .n-card {
+    background: var(--card); border: 1px solid var(--line); overflow: hidden; display: flex; flex-direction: column;
+    transition: transform .3s, box-shadow .3s; box-shadow: 0 6px 22px rgba(0,0,0,.15);
+  }
+  .n-card:hover { transform: translateY(-6px); box-shadow: 0 14px 34px rgba(0,0,0,.28); }
+  .n-card img { width: 100%; height: 190px; object-fit: cover; border-bottom: 1px solid var(--line); }
+  .n-card .cuerpo { padding: 24px; display: flex; flex-direction: column; flex: 1; }
+  .n-card h3 { margin: 0; font-family: var(--ft); font-size: 1.2rem; letter-spacing: 1px; color: var(--acc2); }
+  .n-card p { margin: 8px 0 0; color: var(--muted); font-weight: 300; font-size: .92rem; flex: 1; }
+  .n-precio { margin: 14px 0 16px; font-size: 1.5rem; font-weight: 600; color: var(--acc); }
+  .n-card .n-btn { text-align: center; }
+
+  /* SOBRE NOSOTROS */
+  .n-dest { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 22px; max-width: 980px; margin: 44px auto 0; }
+  .n-dest div { border: 1px solid var(--line); background: var(--card); padding: 22px; text-align: center; }
+  .n-dest b { display: block; font-family: var(--ft); color: var(--acc2); letter-spacing: 1px; margin-bottom: 4px; }
+  .n-dest span { color: var(--muted); font-weight: 300; font-size: .9rem; }
+
+  /* GALERÍA */
+  .n-galeria { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 14px; max-width: 1100px; margin: 44px auto 0; }
+  .n-galeria img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border: 1px solid var(--line); cursor: zoom-in; transition: transform .3s, opacity .3s; }
+  .n-galeria img:hover { transform: scale(1.03); opacity: .92; }
+
+  /* CUADROS (visítanos y contacto) */
+  .n-caja {
+    max-width: 720px; margin: 0 auto; padding: 46px 34px; text-align: center;
+    background: var(--card); border: 1px solid var(--line); border-top: 3px solid var(--acc);
+    box-shadow: 0 6px 22px rgba(0,0,0,.15);
+  }
+  .n-caja p { margin: 8px 0 0; color: var(--muted); font-weight: 300; }
+  .n-horarios { width: 100%; max-width: 440px; margin: 22px auto 6px; border-collapse: collapse; font-size: .92rem; }
+  .n-horarios td { padding: 9px 4px; border-bottom: 1px solid var(--line); text-align: left; color: var(--txt); font-weight: 300; }
+  .n-horarios td:last-child { text-align: right; color: var(--acc2); font-weight: 600; }
+  .n-caja .n-btn { margin-top: 24px; }
+  .n-contactos { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; margin-top: 28px; }
+  .n-contactos .n-btn { margin-top: 0; }
+
+  /* BOTÓN FLOTANTE WHATSAPP */
+  .n-wa {
+    position: fixed; right: 18px; bottom: 18px; z-index: 90; padding: 13px 20px; border-radius: 40px;
+    background: #25D366; color: #063b1f; font-weight: 700; font-size: .85rem; letter-spacing: 1px;
+    box-shadow: 0 8px 24px rgba(0,0,0,.4); transition: transform .25s;
+  }
+  .n-wa:hover { transform: translateY(-3px); }
+
+  /* PIE */
+  .n-footer { text-align: center; padding: 34px 6% 90px; background: var(--bg); border-top: 1px solid var(--line); font-size: .8rem; color: var(--muted); }
+  .n-footer p { margin: 6px 0 0; }
+  .n-footer b { color: var(--acc); font-weight: 600; }
+  .n-legales { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 22px; margin: 0 0 22px; padding: 0 0 22px; border-bottom: 1px solid var(--line); }
+  .n-legales a { font-size: .72rem; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); transition: color .25s; }
+  .n-legales a:hover { color: var(--acc); }
+  .n-creditos { font-size: .72rem; letter-spacing: 2px; text-transform: uppercase; }
+
+  /* AVISO */
+  #n-aviso {
+    position: fixed; left: 50%; bottom: 80px; transform: translate(-50%, 20px); z-index: 100001; padding: 14px 28px;
+    background: #000; color: #f5d76e; border: 1px solid #d4af37; font-size: .9rem;
+    opacity: 0; pointer-events: none; transition: all .3s; max-width: 90vw; text-align: center;
+  }
+  #n-aviso.ver { opacity: 1; transform: translate(-50%, 0); }
+
+  /* COOKIES */
+  #n-cookies {
+    position: fixed; left: 16px; right: 16px; bottom: 16px; z-index: 99998; max-width: 780px; margin: 0 auto; padding: 20px 24px;
+    background: var(--card); color: var(--txt); border: 1px solid var(--acc); box-shadow: 0 10px 40px rgba(0,0,0,.5);
+    display: none; align-items: center; justify-content: space-between; gap: 18px; flex-wrap: wrap;
+  }
+  #n-cookies.ver { display: flex; }
+  #n-cookies p { margin: 0; flex: 1 1 320px; font-size: .85rem; font-weight: 300; }
+  #n-cookies p a { color: var(--acc); text-decoration: underline; }
+  .n-cookies-btns { display: flex; gap: 10px; flex-wrap: wrap; }
+
+  /* VENTANA DE POLÍTICAS */
+  #n-modal { position: fixed; inset: 0; z-index: 100000; display: none; align-items: center; justify-content: center; padding: 20px; background: rgba(0,0,0,.82); }
+  #n-modal.ver { display: flex; }
+  .n-modal-caja {
+    position: relative; width: 100%; max-width: 820px; max-height: 88vh; overflow-y: auto;
+    background: var(--card); color: var(--txt); border: 1px solid var(--acc); border-top: 3px solid var(--acc);
+    padding: 40px 38px 34px; box-shadow: 0 20px 70px rgba(0,0,0,.6);
+  }
+  .n-cerrar {
+    position: sticky; top: 0; float: right; margin: -22px -20px 0 10px; width: 38px; height: 38px; border-radius: 50%;
+    cursor: pointer; background: var(--bg); color: var(--acc); border: 1px solid var(--acc); font-size: 1.2rem; line-height: 1;
+  }
+  .n-cerrar:hover { background: var(--acc); color: var(--onacc); }
+  .n-modal-caja h3 { margin: 0 0 4px; font-family: var(--ft); font-size: 1.45rem; letter-spacing: 1px; color: var(--acc); }
+  .n-modal-caja h4 { margin: 24px 0 6px; font-family: var(--ft); font-size: 1rem; letter-spacing: 1px; color: var(--acc2); }
+  .n-modal-caja p, .n-modal-caja li { font-size: .9rem; color: var(--txt); font-weight: 300; }
+  .n-modal-caja p { margin: 8px 0; }
+  .n-modal-caja ul { margin: 8px 0; padding-left: 22px; }
+  .n-modal-caja li { margin: 5px 0; }
+  .n-modal-caja strong, .n-modal-caja b { font-weight: 600; }
+  .n-modal-caja a { color: var(--acc); text-decoration: underline; }
+  .n-modal-caja .fecha { font-size: .75rem; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); }
+  .n-modal-caja table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: .82rem; }
+  .n-modal-caja th, .n-modal-caja td { text-align: left; padding: 8px 10px; border: 1px solid var(--line); font-weight: 300; vertical-align: top; }
+  .n-modal-caja th { color: var(--acc); font-weight: 600; background: var(--bg); }
+  .n-zoom { width: 100%; max-height: 78vh; object-fit: contain; }
+
+  @media (max-width: 760px) {
+    .n-burger { display: block; }
+    .n-nombre { font-size: .85rem; letter-spacing: 1px; }
+    #n-links {
+      display: none; position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; gap: 4px;
+      background: var(--bg); padding: 10px 6% 22px; border-bottom: 1px solid var(--line);
+    }
+    #n-links.abierto { display: flex; }
+    #n-links a { display: block; padding: 10px 0; font-size: .9rem; }
+    .n-logo.grande { width: 140px; height: 140px; font-size: 2.1rem; }
+    .n-caja { padding: 38px 20px; }
+    .n-modal-caja { padding: 34px 20px 26px; }
+    .n-modal-caja table { font-size: .74rem; }
+  }
+</style>
+</head>
+
+<body>
+
+  <nav class="n-nav">
+    <a class="n-marca" href="#inicio">
+      <span class="n-logo chico" data-logo></span>
+      <span class="n-nombre" data-nombre></span>
+    </a>
+    <button type="button" class="n-burger" aria-label="Abrir menú" onclick="return SITIO.menu()">&#9776;</button>
+    <ul id="n-links"></ul>
+  </nav>
+
+  <!-- PORTADA -->
+  <header class="n-hero" id="inicio">
+    <div class="n-logo grande" data-logo></div>
+    <h1 data-nombre></h1>
+    <div class="n-linea"></div>
+    <p id="n-eslogan"></p>
+    <div class="n-hero-btns">
+      <a id="n-cta" class="n-btn" href="#contacto"></a>
+      <a id="n-cta2" class="n-btn sec" href="#servicios">Ver servicios</a>
+    </div>
+  </header>
+
+  <!-- SERVICIOS -->
+  <section class="n-sec alt" id="servicios" hidden>
+    <h2 class="n-tit" id="n-tit-serv"></h2>
+    <p class="n-sub" id="n-sub-serv"></p>
+    <div class="n-grid" id="n-servicios"></div>
+  </section>
+
+  <!-- SOBRE NOSOTROS -->
+  <section class="n-sec" id="nosotros" hidden>
+    <h2 class="n-tit" id="n-tit-sobre"></h2>
+    <div class="n-linea"></div>
+    <p class="n-texto" id="n-sobre"></p>
+    <div class="n-dest" id="n-destacados"></div>
+  </section>
+
+  <!-- GALERÍA -->
+  <section class="n-sec alt" id="galeria" hidden>
+    <h2 class="n-tit" id="n-tit-gal"></h2>
+    <div class="n-galeria" id="n-galeria"></div>
+  </section>
+
+  <!-- VISÍTANOS -->
+  <section class="n-sec" id="visitanos" hidden>
+    <div class="n-caja">
+      <h2 class="n-tit">Visítanos</h2>
+      <div class="n-linea"></div>
+      <p id="n-dir"></p>
+      <table class="n-horarios" id="n-horarios"></table>
+      <a id="n-mapa" class="n-btn" target="_blank" rel="noopener">Cómo llegar</a>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section class="n-sec alt" id="contacto" hidden>
+    <div class="n-caja">
+      <h2 class="n-tit">Contacto</h2>
+      <div class="n-linea"></div>
+      <p id="n-contacto-texto"></p>
+      <div class="n-contactos" id="n-contactos"></div>
+    </div>
+  </section>
+
+  <footer class="n-footer">
+    <div class="n-legales" id="n-legales"></div>
+    <p id="n-titular"></p>
+    <p>© <span id="n-year">2026</span> <b data-nombre></b>. Todos los derechos reservados.</p>
+    <p class="n-creditos" id="n-creditos"></p>
+  </footer>
+
+  <a id="n-wa" class="n-wa" target="_blank" rel="noopener" hidden>WhatsApp</a>
+
+  <!-- AVISO DE COOKIES -->
+  <div id="n-cookies" role="dialog" aria-label="Aviso de cookies">
+    <p>
+      Usamos cookies de analítica (Google Analytics) para entender cómo se usa la página y mejorarla.
+      Solo se activan si las aceptas. Más información en nuestra
+      <a href="#" onclick="return SITIO.politica('cookies')">política de cookies</a>.
+    </p>
+    <div class="n-cookies-btns">
+      <button type="button" class="n-btn sec chico" onclick="return SITIO.cookies(false)">Rechazar</button>
+      <button type="button" class="n-btn chico" onclick="return SITIO.cookies(true)">Aceptar</button>
+    </div>
+  </div>
+
+  <!-- VENTANA (políticas e imágenes) -->
+  <div id="n-modal" role="dialog" aria-modal="true" aria-label="Información">
+    <div class="n-modal-caja">
+      <button type="button" class="n-cerrar" aria-label="Cerrar" onclick="return SITIO.cerrar()">&times;</button>
+      <div id="n-modal-contenido"></div>
+    </div>
+  </div>
+
+  <div id="n-aviso"></div>
+
+  <!-- ============================================================
+       TEXTOS LEGALES (se completan solos con los datos del NEGOCIO)
+  ============================================================ -->
+
+  <!-- PRIVACIDAD -->
+  <template id="pol-privacidad">
+    <h3>Política de privacidad y tratamiento de datos personales</h3>
+    <p class="fecha">Última actualización: <span data-v="fecha"></span></p>
+
+    <h4>1. Responsable del tratamiento</h4>
+    <p><strong data-v="titular"></strong><span data-v="nitFrase"></span>, con nombre comercial <strong data-v="nombre"></strong>, domicilio en <span data-v="ubicacion"></span>. Contacto: <span data-v="contacto"></span>.</p>
+
+    <h4>2. Marco legal</h4>
+    <p>Esta política se rige por el artículo 15 de la Constitución Política de Colombia, la Ley 1581 de 2012, el Decreto 1377 de 2013 (incorporado en el Decreto 1074 de 2015) y las demás normas colombianas sobre protección de datos personales.</p>
+
+    <h4>3. Qué datos tratamos</h4>
+    <ul>
+      <li><strong>Datos que nos entregas:</strong> cuando nos contactas por WhatsApp, teléfono, correo o redes sociales, tratamos tu nombre, tu número de teléfono o usuario, tu correo y el contenido de tus mensajes, incluida la información necesaria para atenderte (por ejemplo, la fecha y hora de una cita o la descripción del servicio que solicitas).</li>
+      <li data-si="ga"><strong>Datos de navegación:</strong> solo si aceptas las cookies de analítica, Google Analytics recoge información estadística sobre el uso de la página (páginas visitadas, tiempo de permanencia, tipo de dispositivo y navegador, ubicación aproximada). Consulta la <a href="#" onclick="return SITIO.politica('cookies')">política de cookies</a>.</li>
+    </ul>
+    <p>Esta página no tiene formularios de registro, no procesa pagos en línea y no solicita datos sensibles.</p>
+
+    <h4>4. Finalidades</h4>
+    <ul>
+      <li>Agendar, prestar y dar seguimiento a los servicios que solicitas.</li>
+      <li>Responder consultas y enviarte cotizaciones.</li>
+      <li>Atender garantías, peticiones, quejas y reclamos.</li>
+      <li>Cumplir obligaciones legales, contables y tributarias.</li>
+      <li data-si="ga">Entender cómo se usa la página para mejorarla (solo con tu autorización de cookies).</li>
+      <li>Enviarte promociones o novedades, únicamente si nos lo pides de forma expresa.</li>
+    </ul>
+    <p>No vendemos ni alquilamos tus datos personales.</p>
+
+    <h4>5. Autorización</h4>
+    <p>Al contactarnos y entregarnos tus datos, nos autorizas de manera libre, previa e informada para tratarlos conforme a esta política. Puedes revocar esa autorización en cualquier momento.</p>
+
+    <h4>6. Terceros que intervienen</h4>
+    <p>Para que la página y la atención funcionen participan servicios de terceros, cada uno con su propia política de privacidad: WhatsApp (Meta), las redes sociales a las que enlazamos, Google Fonts<span data-si="ga">, Google Analytics</span> y el proveedor de alojamiento de la página. Algunos de ellos operan fuera de Colombia, por ejemplo en Estados Unidos, por lo que ciertos datos pueden ser tratados en otros países.</p>
+
+    <h4>7. Derechos del titular</h4>
+    <p>Como titular de los datos, tienes derecho a:</p>
+    <ul>
+      <li>Conocer, actualizar y rectificar tus datos personales.</li>
+      <li>Solicitar prueba de la autorización otorgada.</li>
+      <li>Ser informado sobre el uso que se ha dado a tus datos.</li>
+      <li>Presentar quejas ante la Superintendencia de Industria y Comercio (SIC) por infracciones a la ley.</li>
+      <li>Revocar la autorización y/o solicitar la supresión de tus datos, cuando no se respeten los principios y garantías legales.</li>
+      <li>Acceder de forma gratuita a tus datos personales.</li>
+    </ul>
+
+    <h4>8. Cómo ejercer tus derechos</h4>
+    <p>Escríbenos por los medios indicados en el punto 1, con tu nombre, tu solicitud y un medio para responderte. Las consultas se responden en un máximo de 10 días hábiles, prorrogables por 5 días hábiles más, y los reclamos en un máximo de 15 días hábiles, prorrogables por 8 días hábiles más, conforme a los artículos 14 y 15 de la Ley 1581 de 2012.</p>
+
+    <h4>9. Niños, niñas y adolescentes</h4>
+    <p>Cuando el servicio sea para un menor de edad, sus datos deben ser entregados por su padre, madre o representante legal, quien autoriza su tratamiento solo para atender ese servicio. No recopilamos datos de menores de forma independiente.</p>
+
+    <h4>10. Seguridad y conservación</h4>
+    <p>Aplicamos medidas razonables para proteger la información que recibimos. Conservamos tus datos únicamente el tiempo necesario para atender tu solicitud y cumplir obligaciones legales, y luego los eliminamos.</p>
+
+    <h4>11. Cambios a esta política</h4>
+    <p>Podemos actualizar esta política. La versión vigente será siempre la publicada en esta página, con su fecha de actualización.</p>
+  </template>
+
+  <!-- TÉRMINOS -->
+  <template id="pol-terminos">
+    <h3>Términos y condiciones de uso</h3>
+    <p class="fecha">Última actualización: <span data-v="fecha"></span></p>
+
+    <h4>1. Aceptación</h4>
+    <p>Al navegar por esta página aceptas estos términos. Si no estás de acuerdo con ellos, te pedimos que no la uses.</p>
+
+    <h4>2. Titular del sitio</h4>
+    <p>Esta página es operada por <strong data-v="titular"></strong><span data-v="nitFrase"></span>, con nombre comercial <strong data-v="nombre"></strong>, domicilio en <span data-v="ubicacion"></span>. Contacto: <span data-v="contacto"></span>.</p>
+
+    <h4>3. Información de servicios y precios</h4>
+    <p>Los servicios, descripciones, imágenes y precios publicados tienen fines informativos. Los precios pueden cambiar sin previo aviso y el valor final del servicio se confirma antes de prestarlo. Algunos servicios pueden variar según el caso particular de cada cliente.</p>
+
+    <h4>4. Citas y reservas</h4>
+    <p>Las citas se gestionan por los canales de contacto indicados en la página y se rigen por la <a href="#" onclick="return SITIO.politica('citas')">política de citas y cancelaciones</a>.</p>
+
+    <h4>5. Propiedad intelectual</h4>
+    <p>El nombre comercial, el logo, las imágenes, los textos y demás contenidos de esta página pertenecen a su titular o se usan con autorización, y están protegidos por las normas colombianas de derechos de autor (Ley 23 de 1982) y propiedad industrial, así como por la Decisión Andina 351 de 1993. Está prohibido copiarlos o usarlos con fines comerciales sin autorización previa y por escrito.</p>
+
+    <h4>6. Enlaces a terceros</h4>
+    <p>La página puede contener enlaces a sitios de terceros (redes sociales, mapas, WhatsApp). Cada uno tiene sus propios términos y políticas, y no somos responsables de su contenido ni de su funcionamiento.</p>
+
+    <h4>7. Uso adecuado</h4>
+    <p>Te comprometes a usar la página de manera lícita y a no intentar dañarla, sobrecargarla ni acceder a ella de forma no autorizada.</p>
+
+    <h4>8. Limitación de responsabilidad</h4>
+    <p>La información se ofrece tal como está. No garantizamos que la página esté siempre disponible o libre de errores, y no respondemos por daños derivados de su uso, en la medida permitida por la ley. Esto no limita los derechos que la ley reconoce a los consumidores.</p>
+
+    <h4>9. Otras políticas</h4>
+    <p>El tratamiento de datos personales se rige por la <a href="#" onclick="return SITIO.politica('privacidad')">política de privacidad</a>, el uso de cookies por la <a href="#" onclick="return SITIO.politica('cookies')">política de cookies</a> y las inconformidades por la <a href="#" onclick="return SITIO.politica('garantia')">política de garantía y reclamos</a>.</p>
+
+    <h4>10. Cambios</h4>
+    <p>Podemos modificar estos términos y el contenido de la página en cualquier momento. La versión vigente es la publicada aquí.</p>
+
+    <h4>11. Ley aplicable</h4>
+    <p>Estos términos se rigen por las leyes de la República de Colombia. Cualquier controversia se someterá a los jueces y autoridades competentes de Colombia.</p>
+  </template>
+
+  <!-- CITAS Y CANCELACIONES -->
+  <template id="pol-citas">
+    <h3>Política de citas y cancelaciones</h3>
+    <p class="fecha">Última actualización: <span data-v="fecha"></span></p>
+
+    <h4>1. Cómo agendar</h4>
+    <p>Puedes agendar por los canales de contacto de <strong data-v="nombre"></strong> (WhatsApp, teléfono o directamente en el establecimiento). La cita queda <strong>confirmada</strong> cuando te respondemos confirmando la fecha y la hora.</p>
+
+    <h4>2. Puntualidad</h4>
+    <p>Tenemos una tolerancia de <strong data-v="tolerancia"></strong> minutos. Pasado ese tiempo, podemos reasignar tu turno o ajustar el servicio al tiempo disponible.</p>
+
+    <h4>3. Cancelaciones y cambios</h4>
+    <p>Si no puedes asistir, avísanos con al menos <strong data-v="cancelHoras"></strong> horas de anticipación por los mismos canales, para reprogramar tu cita o liberar el espacio para otra persona.</p>
+
+    <h4>4. Inasistencias</h4>
+    <p>Si no asistes sin avisar de forma reiterada, podemos pedirte confirmación previa o un anticipo para futuras citas. Si se requiere un anticipo, te lo informaremos antes de confirmar.</p>
+
+    <h4>5. Cancelaciones por parte nuestra</h4>
+    <p>Si debemos cancelar o mover tu cita por una causa propia o de fuerza mayor, te avisaremos lo antes posible y la reprogramaremos sin costo.</p>
+
+    <h4 data-si="pagos">6. Medios de pago</h4>
+    <p data-si="pagos">Aceptamos: <span data-v="pagos"></span>.</p>
+
+    <h4>Derechos del consumidor</h4>
+    <p>Esta política no limita los derechos que la Ley 1480 de 2011 (Estatuto del Consumidor) te reconoce.</p>
+  </template>
+
+  <!-- GARANTÍA Y RECLAMOS -->
+  <template id="pol-garantia">
+    <h3>Política de garantía y reclamos</h3>
+    <p class="fecha">Última actualización: <span data-v="fecha"></span></p>
+
+    <h4>1. Garantía legal</h4>
+    <p>Los servicios de <strong data-v="nombre"></strong> cuentan con la garantía legal prevista en la Ley 1480 de 2011 (Estatuto del Consumidor), sobre la calidad e idoneidad del servicio prestado.</p>
+
+    <h4 data-si="garantia">2. Garantía adicional</h4>
+    <p data-si="garantia">Si dentro de los <strong data-v="garantiaDias"></strong> días siguientes a la prestación del servicio tienes una inconformidad con su calidad, contáctanos para revisarlo y, si corresponde, corregirlo sin costo adicional.</p>
+    <p data-si="nota"><span data-v="notaGarantia"></span></p>
+
+    <h4>3. Qué no cubre</h4>
+    <p>La garantía no cubre inconformidades causadas por el mal uso, el descuido o la intervención de terceros después de prestado el servicio, ni cambios de opinión sobre aspectos que fueron acordados previamente con el cliente.</p>
+
+    <h4>4. Cómo hacer un reclamo</h4>
+    <p>Escríbenos o llámanos por estos medios: <span data-v="contacto"></span>. Cuéntanos qué ocurrió, cuándo recibiste el servicio y, si puedes, envía fotos o evidencias. Responderemos lo antes posible y, en todo caso, dentro de los 15 días hábiles siguientes.</p>
+
+    <h4>5. Si no llegamos a un acuerdo</h4>
+    <p>Puedes acudir a la Superintendencia de Industria y Comercio (SIC), autoridad de protección al consumidor en Colombia.</p>
+  </template>
+
+  <!-- COOKIES -->
+  <template id="pol-cookies">
+    <h3>Política de cookies</h3>
+    <p class="fecha">Última actualización: <span data-v="fecha"></span></p>
+
+    <h4>1. Qué son las cookies</h4>
+    <p>Son pequeños archivos que un sitio guarda en tu navegador para recordar información o medir cómo se usa. Esta política aplica a la página de <strong data-v="nombre"></strong>, operada por <span data-v="titular"></span>, en <span data-v="ubicacion"></span>.</p>
+
+    <div data-si="ga">
+      <h4>2. Qué usamos</h4>
+      <table>
+        <tr><th>Tipo</th><th>Servicio</th><th>Para qué</th><th>Duración</th></tr>
+        <tr><td>Analítica (opcional)</td><td>Google Analytics (cookies <em>_ga</em> y <em>_ga_*</em>)</td><td>Medir visitas, páginas vistas y uso general de la página, de forma estadística.</td><td>Hasta 2 años</td></tr>
+        <tr><td>Preferencia (necesaria)</td><td>Almacenamiento local de tu navegador</td><td>Recordar si aceptaste o rechazaste las cookies de analítica.</td><td>Hasta que lo borres</td></tr>
+      </table>
+      <p>Las cookies de analítica <strong>solo se activan si las aceptas</strong>. Si las rechazas, no se carga Google Analytics.</p>
+    </div>
+    <div data-no="ga">
+      <h4>2. Qué usamos</h4>
+      <p>Esta página <strong>no instala cookies propias, ni de analítica, ni de publicidad</strong>.</p>
+    </div>
+
+    <h4>3. Google Fonts</h4>
+    <p>Las tipografías de la página se cargan desde los servidores de Google (Google Fonts). Para ello, Google puede recibir tu dirección IP al abrir la página, aunque no se usan cookies de analítica para ese fin.</p>
+
+    <h4 data-si="ga">4. Cómo cambiar tu decisión</h4>
+    <ul data-si="ga">
+      <li>Pulsa <strong>"Preferencias de cookies"</strong> en el pie de página y elige de nuevo.</li>
+      <li>Borra las cookies desde la configuración de tu navegador.</li>
+      <li>Instala el <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener">complemento de inhabilitación de Google Analytics</a>.</li>
+    </ul>
+
+    <h4>Sitios de terceros</h4>
+    <p>Al visitar WhatsApp, redes sociales o mapas desde nuestros enlaces, esos sitios pueden usar sus propias cookies bajo sus políticas.<span data-si="ga"> Para conocer cómo usa Google las cookies, consulta su <a href="https://policies.google.com/technologies/cookies" target="_blank" rel="noopener">información sobre cookies</a>.</span></p>
+
+    <h4>Más información</h4>
+    <p>El tratamiento de tus datos se explica en nuestra <a href="#" onclick="return SITIO.politica('privacidad')">política de privacidad</a>.</p>
+  </template>
+
+<script>
+  /* ============================================================
+     ★★★  CONFIGURACIÓN —   ★★★
+    editar lo que está entre comillas. 
+    
+      cambiar también <title> y <meta name="description"> arriba.
+  ============================================================ */
+  var NEGOCIO = {
+
+    /* ---------- DISEÑO ---------- */
+    // Estilos listos: "barberia" (negro y dorado) · "taller" (carbón y naranja)
+    //                 "claro" (blanco y azul)     · "verde" (oscuro y verde)
+    tema: "taller",
+    colores: {},        // opcional: cambia colores sueltos, ej: { acc: "#e63946" }
+
+    /* ---------- DATOS DEL NEGOCIO ---------- */
+    nombre: "PAINT CUMARAL",
+    eslogan: "TU MOTO EN LAS MEJORES MANOS",
+    descripcion: "SERVICIO TECNICO DE RESTAURACION. Agenda tu cita por WhatsApp.",
+    schemaTipo: "LocalBusiness",    // para Google: "HairSalon", "AutoRepair", "Store", "LocalBusiness"...
+    logo: "",                   // ej: "img/logo.png"
+    imagenPortada: "",          // foto grande de fondo, ej: "img/portada.jpg" (opcional)
+
+    /* ---------- CONTACTO ---------- */
+    whatsapp: "57 3006378619",   // con código de país y sin signos: 57 + número
+    mensajeWhatsapp: "Hola, quiero agendar una cita",
+    textoBoton: "Agendar por WhatsApp",
+    telefono: "300 637 8619",               // ej: "300 123 4567"
+    correo: "mottainteractive@gmail.com",                 // ej: "contacto@minegocio.com"
+    direccion: "Calle 00 # 00-00",
+    ciudad: "cumaral, meta",
+    mapaLink: "",               // opcional: enlace de Google Maps; si lo dejas vacío se genera solo
+    redes: { instagram: "", facebook: "", tiktok: "", youtube: "" },   // pega el enlace completo
+
+    /* ---------- HORARIOS ---------- */
+    horarios: [
+      ["Lunes a viernes", "8:00 am – 7:00 pm"],
+      ["Sábados", "8:00 am – 1:00 pm"],
+      ["Domingos y festivos", "Cerrado"]
+    ],
+
+    /* ---------- SERVICIOS ---------- */
+    serviciosTitulo: "Servicios",
+    serviciosSubtitulo: "Elige tu servicio y agenda en segundos",
+    servicios: [
+      { nombre: "Cambio de aceite",     descripcion: "rapido y necesario.", precio: "$0", imagen: "" },
+      { nombre: "Restauracion",     descripcion: "Dale vida a tu moto.", precio: "$0", imagen: "" },
+      { nombre: "Revision y Diagnostico",     descripcion: "no sabes por que falla? agenda tu cita.",            precio: "$0", imagen: "" },
+      { nombre: "Mantenimiento General",  descripcion: "mantenimiento full.",                   precio: "$0", imagen: "" },
+      { nombre: "otro servicio",    descripcion: "cualquier otra cosa que necesites.",               precio: "$0", imagen: "" }
+    ],
+
+    /* ---------- SOBRE NOSOTROS ---------- */
+    sobreTitulo: "Sobre nosotros",
+    sobreTexto: "somos el mejor taller de cumaral.",
+    destacados: [
+      { titulo: "Experiencia", texto: "15 años" },
+      { titulo: "Calidad",     texto: "Productos y herramientas de primera" },
+      { titulo: "Confianza",   texto: "Atención honesta y puntual" }
+    ],
+
+    /* ---------- GALERÍA ---------- */
+    galeriaTitulo: "Galería",
+    galeria: [],                //  ["img/1.jpg", "img/2.jpg", "img/3.jpg"]
+
+    /* ---------- ANALÍTICA  ---------- */
+    gaId: "",                   // ID de Google Analytics 4,  "G-XXXXXXXXXX"
+
+    /* ---------- DATOS LEGALES ---------- */
+    legal: {
+      titular: "",              // nombre completo del dueño o razón social  ← OBLIGATORIO
+      nit: "",                  // NIT o cédula (opcional)
+      fecha: "14 de octubre de 2026",   // fecha de las políticas
+      cancelacionHoras: 2,      // horas de anticipación para cancelar
+      toleranciaMinutos: 10,    // minutos de tolerancia por llegada tarde
+      garantiaDias: 0,          // días de garantía adicional (0 = solo la legal)
+      notaGarantia: "",         // texto extra de garantía (opcional)
+      mediosPago: "Efectivo, transferencia y billeteras digitales"   // vacío = no se muestra
+    },
+    politicas: ["privacidad", "terminos", "citas", "garantia", "cookies"],   // cuáles mostrar en el pie
+
+    creditos: "Sitio creado por MOTTA INTERACTIVE"    // vacío para ocultar
+  };
+
+  /* ============================================================
+     ESTILOS LISTOS 
+  ============================================================ */
+  var TEMAS = {
+    barberia: { bg: "#070707", bg2: "#111111", card: "#1a1a1a", acc: "#d4af37", acc2: "#f5d76e", line: "#9c7a1a", txt: "#e9e4d4", muted: "#9a9684", onacc: "#000000",
+      hero: "radial-gradient(circle at 50% 30%, #2a2208 0%, #0d0d0d 55%, #000 100%)", ft: "'Cinzel', Georgia, serif" },
+    taller:   { bg: "#0f1113", bg2: "#16191c", card: "#1e2226", acc: "#ff7a1a", acc2: "#ffa24d", line: "#4a4f55", txt: "#e8eaec", muted: "#9aa2a9", onacc: "#000000",
+      hero: "radial-gradient(circle at 50% 30%, #2b1a0d 0%, #131517 55%, #0a0b0c 100%)", ft: "'Oswald', Arial, sans-serif" },
+    claro:    { bg: "#ffffff", bg2: "#f3f6fa", card: "#ffffff", acc: "#1f6feb", acc2: "#1553b8", line: "#d3dbe6", txt: "#1b2430", muted: "#5b6776", onacc: "#ffffff",
+      hero: "linear-gradient(180deg, #eaf1fc 0%, #ffffff 100%)", ft: "'Poppins', Arial, sans-serif" },
+    verde:    { bg: "#0d1411", bg2: "#131c18", card: "#1a2520", acc: "#3ecf8e", acc2: "#86e3b8", line: "#2f5a49", txt: "#e6efe9", muted: "#92a89d", onacc: "#04140d",
+      hero: "radial-gradient(circle at 50% 30%, #12382a 0%, #0d1411 60%, #08100c 100%)", ft: "'Poppins', Arial, sans-serif" }
+  };
+
+  /* ============================================================
+                       LÓGICA
+  ============================================================ */
+  var SITIO = {
+
+    gaCargado: false,
+
+    esc: function (s) {
+      return String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#39;");
+    },
+    digitos: function (s) { return String(s || "").replace(/\D/g, ""); },
+    id: function (x) { return document.getElementById(x); },
+
+    aviso: function (texto) {
+      var el = SITIO.id("n-aviso");
+      el.textContent = texto;
+      el.classList.add("ver");
+      clearTimeout(window.__sitioT);
+      window.__sitioT = setTimeout(function () { el.classList.remove("ver"); }, 2800);
+    },
+
+    wa: function (msg) {
+      var n = SITIO.digitos(NEGOCIO.whatsapp);
+      if (!n) return "";
+      return "https://wa.me/" + n + "?text=" + encodeURIComponent(msg || NEGOCIO.mensajeWhatsapp || "");
+    },
+
+    menu: function () { SITIO.id("n-links").classList.toggle("abierto"); return false; },
+
+    /* ---------- VENTANA ---------- */
+    abrirModal: function () {
+      var m = SITIO.id("n-modal");
+      m.classList.add("ver");
+      m.querySelector(".n-modal-caja").scrollTop = 0;
+      document.body.style.overflow = "hidden";
+    },
+    cerrar: function () {
+      SITIO.id("n-modal").classList.remove("ver");
+      document.body.style.overflow = "";
+      return false;
+    },
+    imagen: function (src) {
+      var cont = SITIO.id("n-modal-contenido");
+      cont.innerHTML = "";
+      var im = document.createElement("img");
+      im.className = "n-zoom"; im.src = src; im.alt = NEGOCIO.nombre || "";
+      cont.appendChild(im);
+      SITIO.abrirModal();
+      return false;
+    },
+
+    /* ---------- POLÍTICAS ---------- */
+    valores: function () {
+      var N = NEGOCIO, L = N.legal || {};
+      var falta = function (t) { return "[COMPLETAR: " + t + "]"; };
+      var ubic = [N.direccion, N.ciudad].filter(Boolean).join(", ");
+      var wa = SITIO.digitos(N.whatsapp);
+      var partes = [];
+      if (N.correo) partes.push("correo " + N.correo);
+      if (wa) partes.push("WhatsApp +" + wa);
+      if (N.telefono) partes.push("teléfono " + N.telefono);
+      return {
+        titular: L.titular || falta("nombre del titular o razón social"),
+        nitFrase: L.nit ? " (NIT/CC " + L.nit + ")" : "",
+        nombre: N.nombre || "",
+        ubicacion: ubic || falta("dirección y ciudad"),
+        contacto: partes.length ? partes.join(" · ") : falta("datos de contacto"),
+        fecha: L.fecha || "",
+        cancelHoras: L.cancelacionHoras || 2,
+        tolerancia: L.toleranciaMinutos || 10,
+        garantiaDias: L.garantiaDias || 0,
+        notaGarantia: L.notaGarantia || "",
+        pagos: L.mediosPago || ""
+      };
+    },
+
+    politica: function (nombre) {
+      var tpl = SITIO.id("pol-" + nombre);
+      var cont = SITIO.id("n-modal-contenido");
+      if (!tpl || !cont) return false;
+      cont.innerHTML = "";
+      cont.appendChild(tpl.content.cloneNode(true));
+      var L = NEGOCIO.legal || {};
+      var si = { ga: !!NEGOCIO.gaId, garantia: Number(L.garantiaDias) > 0, nota: !!L.notaGarantia, pagos: !!L.mediosPago };
+      cont.querySelectorAll("[data-si]").forEach(function (el) { if (!si[el.getAttribute("data-si")]) el.parentNode.removeChild(el); });
+      cont.querySelectorAll("[data-no]").forEach(function (el) { if (si[el.getAttribute("data-no")]) el.parentNode.removeChild(el); });
+      var V = SITIO.valores();
+      cont.querySelectorAll("[data-v]").forEach(function (el) { el.textContent = V[el.getAttribute("data-v")]; });
+      SITIO.abrirModal();
+      return false;
+    },
+
+    /* ---------- COOKIES Y GOOGLE ANALYTICS ---------- */
+    leerDecision: function () { try { return localStorage.getItem("sitio_cookies"); } catch (e) { return null; } },
+    guardarDecision: function (v) { try { localStorage.setItem("sitio_cookies", v); } catch (e) {} },
+
+    cargarAnalytics: function () {
+      var id = NEGOCIO.gaId;
+      if (!id || SITIO.gaCargado) return;
+      SITIO.gaCargado = true;
+      window["ga-disable-" + id] = false;
+      var s = document.createElement("script");
+      s.async = true;
+      s.src = "https://www.googletagmanager.com/gtag/js?id=" + encodeURIComponent(id);
+      document.head.appendChild(s);
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function () { window.dataLayer.push(arguments); };
+      window.gtag("js", new Date());
+      window.gtag("config", id);
+    },
+
+    borrarCookiesAnalytics: function () {
+      var partes = location.hostname.split(".");
+      var dominios = ["", location.hostname, "." + location.hostname];
+      if (partes.length > 2) dominios.push("." + partes.slice(-2).join("."));
+      document.cookie.split(";").forEach(function (c) {
+        var nombre = c.split("=")[0].trim();
+        if (nombre.indexOf("_ga") === 0) {
+          dominios.forEach(function (d) {
+            document.cookie = nombre + "=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/" + (d ? "; domain=" + d : "");
+          });
+        }
+      });
+    },
+
+    cookies: function (acepta) {
+      SITIO.guardarDecision(acepta ? "si" : "no");
+      SITIO.id("n-cookies").classList.remove("ver");
+      if (acepta) {
+        SITIO.cargarAnalytics();
+        SITIO.aviso("Gracias. Cookies de analítica activadas.");
+      } else {
+        if (NEGOCIO.gaId) window["ga-disable-" + NEGOCIO.gaId] = true;
+        SITIO.borrarCookiesAnalytics();
+        SITIO.aviso("Entendido. No usaremos cookies de analítica.");
+      }
+      return false;
+    },
+
+    verCookies: function () {
+      if (!NEGOCIO.gaId) { SITIO.aviso("Esta página no usa cookies de analítica."); return false; }
+      SITIO.id("n-cookies").classList.add("ver");
+      return false;
+    },
+
+    /* ---------- CONSTRUCCIÓN DE LA PÁGINA ---------- */
+    aplicarTema: function () {
+      var N = NEGOCIO;
+      var t = Object.assign({}, TEMAS[N.tema] || TEMAS.barberia, N.colores || {});
+      var r = document.documentElement.style;
+      ["bg", "bg2", "card", "acc", "acc2", "line", "txt", "muted", "onacc", "hero", "ft"].forEach(function (k) {
+        if (t[k]) r.setProperty("--" + k, t[k]);
+      });
+    },
+
+    monograma: function (nombre) {
+      var p = String(nombre || "").trim().split(/\s+/).filter(Boolean);
+      if (!p.length) return "N";
+      var ini = p.length === 1 ? p[0].charAt(0) : p[0].charAt(0) + p[1].charAt(0);
+      return ini.toUpperCase();
+    },
+
+    construir: function () {
+      var N = NEGOCIO, E = SITIO.esc, $ = SITIO.id;
+      SITIO.aplicarTema();
+
+      /* Título, descripción y nombre */
+      document.title = N.nombre || document.title;
+      var meta = document.querySelector('meta[name="description"]');
+      if (meta && N.descripcion) meta.setAttribute("content", N.descripcion);
+      document.querySelectorAll("[data-nombre]").forEach(function (el) { el.textContent = N.nombre || ""; });
+
+      /* Logo */
+      document.querySelectorAll("[data-logo]").forEach(function (el) {
+        if (N.logo) { el.style.backgroundImage = "url('" + N.logo + "')"; el.textContent = ""; }
+        else { el.textContent = SITIO.monograma(N.nombre); }
+      });
+
+      /* Portada */
+      var hero = $("inicio");
+      if (N.imagenPortada) {
+        hero.classList.add("foto");
+        hero.style.backgroundImage = "linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,.75)), url('" + N.imagenPortada + "')";
+      }
+      $("n-eslogan").textContent = N.eslogan || "";
+      $("n-eslogan").hidden = !N.eslogan;
+      var waLink = SITIO.wa();
+      var cta = $("n-cta");
+      cta.textContent = N.textoBoton || "Contáctanos";
+      if (waLink) { cta.href = waLink; cta.target = "_blank"; cta.rel = "noopener"; }
+
+      /* Servicios */
+      var serv = (N.servicios || []).filter(function (s) { return s && s.nombre; });
+      if (serv.length) {
+        $("servicios").hidden = false;
+        $("n-tit-serv").textContent = N.serviciosTitulo || "Servicios";
+        $("n-sub-serv").textContent = N.serviciosSubtitulo || "";
+        $("n-sub-serv").hidden = !N.serviciosSubtitulo;
+        $("n-servicios").innerHTML = serv.map(function (s) {
+          var enlace = SITIO.wa("Hola, quiero agendar: " + s.nombre);
+          var boton = enlace
+            ? '<a class="n-btn" href="' + E(enlace) + '" target="_blank" rel="noopener">Reservar</a>'
+            : '<a class="n-btn" href="#contacto">Reservar</a>';
+          return '<article class="n-card">' +
+            (s.imagen ? '<img src="' + E(s.imagen) + '" alt="' + E(s.nombre) + '" loading="lazy">' : "") +
+            '<div class="cuerpo"><h3>' + E(s.nombre) + "</h3>" +
+            (s.descripcion ? "<p>" + E(s.descripcion) + "</p>" : "<p></p>") +
+            (s.precio ? '<div class="n-precio">' + E(s.precio) + "</div>" : "") +
+            boton + "</div></article>";
+        }).join("");
+      } else { $("n-cta2").hidden = true; }
+
+      /* Sobre nosotros */
+      var dest = (N.destacados || []).filter(function (d) { return d && d.titulo; });
+      if (N.sobreTexto || dest.length) {
+        $("nosotros").hidden = false;
+        $("n-tit-sobre").textContent = N.sobreTitulo || "Sobre nosotros";
+        $("n-sobre").textContent = N.sobreTexto || "";
+        $("n-sobre").hidden = !N.sobreTexto;
+        $("n-destacados").innerHTML = dest.map(function (d) {
+          return "<div><b>" + E(d.titulo) + "</b><span>" + E(d.texto || "") + "</span></div>";
+        }).join("");
+      }
+
+      /* Galería */
+      var gal = (N.galeria || []).filter(Boolean);
+      if (gal.length) {
+        $("galeria").hidden = false;
+        $("n-tit-gal").textContent = N.galeriaTitulo || "Galería";
+        $("n-galeria").innerHTML = gal.map(function (src, i) {
+          return '<img src="' + E(src) + '" alt="' + E((N.nombre || "") + " " + (i + 1)) + '" loading="lazy" onclick="return SITIO.imagen(this.getAttribute(\'src\'))">';
+        }).join("");
+      }
+
+      /* Visítanos */
+      var ubic = [N.direccion, N.ciudad].filter(Boolean).join(", ");
+      var hor = (N.horarios || []).filter(function (h) { return h && h[0]; });
+      if (ubic || hor.length) {
+        $("visitanos").hidden = false;
+        $("n-dir").textContent = ubic;
+        $("n-dir").hidden = !ubic;
+        $("n-horarios").innerHTML = hor.map(function (h) { return "<tr><td>" + E(h[0]) + "</td><td>" + E(h[1] || "") + "</td></tr>"; }).join("");
+        var mapa = $("n-mapa");
+        if (ubic) { mapa.href = N.mapaLink || ("https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(ubic)); }
+        else { mapa.hidden = true; }
+      }
+
+      /* Contacto */
+      var btns = [];
+      if (waLink) btns.push('<a class="n-btn" href="' + E(waLink) + '" target="_blank" rel="noopener">WhatsApp</a>');
+      if (N.telefono) btns.push('<a class="n-btn sec" href="tel:' + E(SITIO.digitos(N.telefono)) + '">Llamar</a>');
+      if (N.correo) btns.push('<a class="n-btn sec" href="mailto:' + E(N.correo) + '">' + E(N.correo) + "</a>");
+      var redes = N.redes || {};
+      [["instagram", "Instagram"], ["facebook", "Facebook"], ["tiktok", "TikTok"], ["youtube", "YouTube"]].forEach(function (r) {
+        if (redes[r[0]]) btns.push('<a class="n-btn sec" href="' + E(redes[r[0]]) + '" target="_blank" rel="noopener">' + r[1] + "</a>");
+      });
+      if (btns.length) {
+        $("contacto").hidden = false;
+        $("n-contacto-texto").textContent = "¿Tienes dudas o quieres agendar? Escríbenos.";
+        $("n-contactos").innerHTML = btns.join("");
+      }
+
+      /* WhatsApp flotante */
+      if (waLink) { var f = $("n-wa"); f.href = waLink; f.hidden = false; }
+
+      /* Menú */
+      var items = [["inicio", "Inicio"], ["servicios", N.serviciosTitulo || "Servicios"], ["nosotros", "Nosotros"], ["galeria", N.galeriaTitulo || "Galería"], ["visitanos", "Visítanos"], ["contacto", "Contacto"]];
+      $("n-links").innerHTML = items.filter(function (it) { return !$(it[0]).hidden; })
+        .map(function (it) { return '<li><a href="#' + it[0] + '">' + E(it[1]) + "</a></li>"; }).join("");
+      $("n-links").addEventListener("click", function (e) { if (e.target.tagName === "A") this.classList.remove("abierto"); });
+
+      /* Pie de página */
+      var nombresPol = { privacidad: "Privacidad", terminos: "Términos y condiciones", citas: "Citas y cancelaciones", garantia: "Garantía y reclamos", cookies: "Cookies" };
+      var enlaces = (N.politicas || []).filter(function (p) { return nombresPol[p]; }).map(function (p) {
+        return '<a href="#" onclick="return SITIO.politica(\'' + p + '\')">' + nombresPol[p] + "</a>";
+      });
+      if (N.gaId) enlaces.push('<a href="#" onclick="return SITIO.verCookies()">Preferencias de cookies</a>');
+      $("n-legales").innerHTML = enlaces.join("");
+      $("n-legales").hidden = !enlaces.length;
+      var L = N.legal || {};
+      if (L.titular) {
+        $("n-titular").textContent = "Titular: " + L.titular + (L.nit ? " · NIT/CC " + L.nit : "") + (ubic ? " · " + ubic : "");
+      } else { $("n-titular").hidden = true; }
+      $("n-year").textContent = new Date().getFullYear();
+      $("n-creditos").textContent = N.creditos || "";
+      $("n-creditos").hidden = !N.creditos;
+
+      /* Datos estructurados para Google */
+      var ld = { "@context": "https://schema.org", "@type": N.schemaTipo || "LocalBusiness", "name": N.nombre };
+      if (N.descripcion) ld.description = N.descripcion;
+      if (N.telefono || N.whatsapp) ld.telephone = N.telefono || ("+" + SITIO.digitos(N.whatsapp));
+      if (N.correo) ld.email = N.correo;
+      if (N.direccion || N.ciudad) ld.address = { "@type": "PostalAddress", "streetAddress": N.direccion || "", "addressLocality": N.ciudad || "", "addressCountry": "CO" };
+      var same = Object.keys(redes).map(function (k) { return redes[k]; }).filter(Boolean);
+      if (same.length) ld.sameAs = same;
+      var sc = document.createElement("script");
+      sc.type = "application/ld+json"; sc.textContent = JSON.stringify(ld);
+      document.head.appendChild(sc);
+
+      /* Cookies: solo se pregunta (y se carga Analytics) si hay un ID configurado */
+      if (N.gaId) {
+        var d = SITIO.leerDecision();
+        if (d === "si") { SITIO.cargarAnalytics(); }
+        else if (d !== "no") { $("n-cookies").classList.add("ver"); }
+      }
+
+      /* Cerrar ventana con Escape o clic fuera */
+      document.addEventListener("keydown", function (e) { if (e.key === "Escape") SITIO.cerrar(); });
+      $("n-modal").addEventListener("click", function (e) { if (e.target === this) SITIO.cerrar(); });
+    }
+  };
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", SITIO.construir);
+  } else {
+    SITIO.construir();
+  }
+</script>
+
+</body>
+</html>
